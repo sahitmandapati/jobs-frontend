@@ -35,8 +35,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function LandingPage(props: any) {
-    console.log(props)
+export default function LandingPage() {
   const classes = useStyles();
 
   const content = {
@@ -45,8 +44,7 @@ export default function LandingPage(props: any) {
     'description': 'Suspendisse aliquam tellus ante, porttitor mattis diam eleifend quis. Pellentesque pulvinar commodo eros sit amet finibus.',
     'primary-action': 'Action',
     'secondary-action': 'Action',
-    'pattern': 'nereus-assets/img/bg/pattern2.png',
-    ...props.content
+    'pattern': 'nereus-assets/img/bg/pattern2.png'
   };
 
   return (
