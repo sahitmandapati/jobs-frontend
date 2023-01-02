@@ -9,16 +9,16 @@ const useStyles = makeStyles((theme) => ({
   section: {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.primary.light,
     paddingTop: theme.spacing(12),
     paddingBottom: theme.spacing(12),
     [theme.breakpoints.up('md')]: {
-      paddingTop: theme.spacing(30),
-      paddingBottom: theme.spacing(30),
+      paddingTop: theme.spacing(10),
+      paddingBottom: theme.spacing(20),
     }
   },
   description: {
-    // color: theme.palette.background.secondary
+    color: 'white'
   },
   primaryAction: {
     marginRight: theme.spacing(2),
@@ -35,16 +35,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function LandingPage() {
+export default function LandingPage(props: any) {
   const classes = useStyles();
 
   const content = {
-    'header-p1': 'Lorem ipsum dolor',
-    'header-p2': 'sit amet, consectetur adipiscing elit.',
-    'description': 'Suspendisse aliquam tellus ante, porttitor mattis diam eleifend quis. Pellentesque pulvinar commodo eros sit amet finibus.',
-    'primary-action': 'Action',
-    'secondary-action': 'Action',
-    'pattern': 'nereus-assets/img/bg/pattern2.png'
+    'header-p1': 'Udhyogam',
+    'header-p2': '.com',
+    'description': "We understand that finding the right job can be a daunting task, and that's where we come in. Our job portal is designed to connect job seekers with top employers across a variety of industries.With our easy-to-use search tools and comprehensive job listings, you can find the perfect opportunity that aligns with your skills, experience, and career goals.So why wait? Start your job search today and take the first step towards finding your dream job. And don't forget to create a profile and upload your resume, so that employers can find you too!",
+    'primary-action': 'SignIn',
+    'secondary-action': 'SignUp',
+    'pattern': 'nereus-assets/img/bg/pattern2.png',
+    ...props.content
   };
 
   return (
