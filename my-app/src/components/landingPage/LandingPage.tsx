@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -60,8 +61,12 @@ export default function LandingPage(props: any) {
             <Typography variant="subtitle1" color="textSecondary" paragraph={true} className={classes.description}>{content['description']}</Typography>
           </Container>
           <Box mt={3}>
-            <Button variant="contained" color="secondary" className={classes.primaryAction}>{content['primary-action']}</Button>
-            <Button variant="outlined" color="secondary" className={classes.secondaryAction}>{content['secondary-action']}</Button>
+            <Button variant="contained" color="secondary" className={classes.primaryAction}>
+              <Link to="signin">{content['primary-action']}</Link>
+            </Button>
+            <Button variant="outlined" color="secondary" className={classes.secondaryAction}>
+              <Link to="signup">{content['secondary-action']}</Link>
+            </Button>
           </Box>
         </Box>
       </Container>
