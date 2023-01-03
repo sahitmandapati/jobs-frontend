@@ -4,6 +4,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate
 } from "react-router-dom";
 import LandingPage from './components/landingPage/LandingPage';
 import SignIn from './components/auth/SignIn';
@@ -26,10 +27,10 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={token ? <Home /> : <LandingPage />} />
-          <Route path="/signin" element={<SignIn setToken={setToken} />} />
-          <Route path="/signup" element={<SignUp />} />
-          {/* <Route path="/home" element={<Home />} /> */}
+          <Route path="/" element={token ? <Navigate to="/home"/> : <LandingPage />} />
+          <Route path="/signin" element={token ? <Navigate to="/home"/> : <SignIn setToken={setToken} />} />
+          <Route path="/signup" element={token ? <Navigate to="/home"/> : <SignUp />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>
