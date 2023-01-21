@@ -97,7 +97,7 @@ function LeftDashboard() {
     <div className={classes.leftDashboardContainers}>
       {LeftDashBoardData.map((item) => {
         return (
-          <Box className={classes.boxItems}>
+          <Box className={classes.boxItems} key={item.text}>
             <SvgIcon
               viewBox="0 0 24 24"
               height="24"

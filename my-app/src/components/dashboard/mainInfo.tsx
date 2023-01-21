@@ -3,7 +3,9 @@ import { makeStyles } from "@mui/styles";
 import { Grid, Box, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ImageListItem from "@mui/material/ImageListItem";
-
+import axios from "axios";
+import useToken from "../../customHooks/useToken";
+import useAccountType from "../../customHooks/useAccountType";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -21,7 +23,7 @@ const useStyles = makeStyles({
     backgroundColor: "#edecec",
     padding: "40px",
     gap: "40px",
-    height:"100vh",
+    height: "100vh",
     width: "100vw",
   },
 
@@ -37,30 +39,40 @@ const useStyles = makeStyles({
 function MainInfo() {
   const classes = useStyles();
 
-//   const [products, setProducts] = useState([]);
+  //   const [products, setProducts] = useState([]);
+  const { token, setToken } = useToken();
+  const { accountType, setAccountType } = useAccountType();
+  const [jobs, setJobs] = useState<any>([])
 
-    useEffect(() => {
-      
-    }, [])
+  // let api : string
+
+  useEffect(() => {
+    // if(accountType === 'poster') {
+      let api = `https://jobs-api-1.vercel.app/api/v1/jobs`
+    // }else if (accountType === 'applier'){
+    //   let api = `https://jobs-api-1.vercel.app/api/v1/applications`
+    // }
     
+    axios.get(api, { headers: { "Authorization": `Bearer ${token}` } })
+      .then(res => {
+        console.log(res.data.jobs);
+        setJobs(res.data.jobs)
+      }
+      )
+  }, [])
+
 
 
   return (
     <div className={classes.bodyContainer} style={{ overflowY: "scroll" }}>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1.5}>
-          {/* {products.map((items) => (
+          {jobs.map((job : any)  => (
             <Grid item xs={4}>
-              <Item>{items.ProductName}</Item>
-              <Item>
-                {" "}
-                <ImageListItem key={items.ProductName}>
-                  <img src={items.Image} />
-                </ImageListItem>
-              </Item>
-              <Item>Price &#8377; {items.Cost}</Item>
+              <Item>{job.company}</Item>
+              <Item>{job.position}</Item>
             </Grid>
-          ))} */}
+          ))}
 
         </Grid>
       </Box>

@@ -40,7 +40,7 @@ async function loginUser(credentials : any) {
 
 const theme = createTheme();
 
-export default function SignIn({ setToken } : any) {
+export default function SignIn({ setToken , setAccountType } : any) {
 
   const navigate = useNavigate();
 
@@ -57,6 +57,7 @@ export default function SignIn({ setToken } : any) {
     });
     // loginResponse.token
     setToken(loginResponse.token)
+    setAccountType(loginResponse.user.accountType)
     navigate("/")
   };
 
