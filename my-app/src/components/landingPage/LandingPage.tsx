@@ -16,7 +16,7 @@ export default function LandingPage(props: any) {
 
   return (
     <div>
-      
+      Landing Page
     </div>
   );
 }
