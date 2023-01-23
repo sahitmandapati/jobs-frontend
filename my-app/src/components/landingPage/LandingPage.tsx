@@ -1,43 +1,8 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-  section: {
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundColor: theme.palette.primary.light,
-    paddingTop: theme.spacing(12),
-    paddingBottom: theme.spacing(12),
-    [theme.breakpoints.up('md')]: {
-      paddingTop: theme.spacing(10),
-      paddingBottom: theme.spacing(20),
-    }
-  },
-  description: {
-    color: 'white'
-  },
-  primaryAction: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.down('xs')]: {
-      width: '100%',
-      marginRight: theme.spacing(0),
-      marginBottom: theme.spacing(2),
-    }
-  },
-  secondaryAction: {
-    [theme.breakpoints.down('xs')]: {
-      width: '100%',
-    }
-  }
-}));
 
 export default function LandingPage(props: any) {
-  const classes = useStyles();
 
   const content = {
     'header-p1': 'Udhyogam',
@@ -50,26 +15,8 @@ export default function LandingPage(props: any) {
   };
 
   return (
-    <section className={classes.section} style={{ backgroundImage: `url("${content['pattern']}")` }}>
-      <Container maxWidth="md">
-        <Box textAlign="center" color="common.white">
-          <Typography variant="h2" component="h2" gutterBottom={true}>
-            <Typography color="secondary" variant="h2" component="span">{content['header-p1']} </Typography>
-            <Typography variant="h2" component="span">{content['header-p2']}</Typography>
-          </Typography>
-          <Container maxWidth="sm">
-            <Typography variant="subtitle1" color="textSecondary" paragraph={true} className={classes.description}>{content['description']}</Typography>
-          </Container>
-          <Box mt={3}>
-            <Button variant="contained" color="secondary" className={classes.primaryAction}>
-              <Link to="signin">{content['primary-action']}</Link>
-            </Button>
-            <Button variant="outlined" color="secondary" className={classes.secondaryAction}>
-              <Link to="signup">{content['secondary-action']}</Link>
-            </Button>
-          </Box>
-        </Box>
-      </Container>
-    </section>
+    <div>
+      
+    </div>
   );
 }
