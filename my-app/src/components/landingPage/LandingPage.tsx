@@ -17,6 +17,9 @@ export default function LandingPage(props: any) {
   return (
     <div>
       Landing Page
+      <h1 className="text-3xl font-bold underline">
+        Hello world!
+      </h1>
     </div>
   );
 }
