@@ -7,7 +7,8 @@ import {
   // Navigate
 } from "react-router-dom";
 import LandingPage from './components/landingPage/LandingPage';
-
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 
 
 const App = () => {
@@ -17,7 +18,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </div>
