@@ -1,29 +1,55 @@
 import React, { useState } from 'react';
 import authHero from '../../images/undraw_sign_in_re_o58h.svg'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
-  const [username, setUsername] = useState('');
+const Login = ({setToken} : any) => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(true);
 
-  const handleSubmit = (event: any) => {
+  const [alert, setAlert] = useState('')
+  const navigate = useNavigate()
+
+  function handleRoutes(response : any) {
+    console.log(response)
+    setToken(response.data.token)
+    navigate('/home')
+  }
+
+  async function loginUserAuthentication(credentials: any) {
+    return (axios.post('https://jobs-api-1.vercel.app/api/v1/auth/login', credentials)
+      .then(response => handleRoutes(response))
+      .catch((err) => {
+        setAlert(err);
+        setTimeout(() => {
+          setAlert('');
+        }, 1000)
+      })
+    )
+  }
+
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
-    console.log(`Username: ${username}, Password: ${password}`);
+    const loginResponse = await loginUserAuthentication({
+      email,
+      password,
+    });
   }
 
   return (
     <div className='flex'>
-      <img className='' src={authHero} alt="hero" />
+      <img className='p-6' src={authHero} alt="hero" />
       <div className='w-full'>
         <div className='px-4 m-2 font-black text-blue-500 text-2xl text-center uppercase'>UDHYOGAM</div>
         <div className='px-4 m-2 font-black text-gray-400 text-base text-center uppercase'>Sigin into your account</div>
         <form onSubmit={handleSubmit} className='flex flex-col w-10/12 m-auto'>
           <label className='flex flex-col'>
-            Username:
+            Email:
             <input
-              type="text"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               className='border border-gray-400 p-2 rounded'
             />
           </label>
@@ -50,7 +76,12 @@ const Login = () => {
             </div>
           </label>
           <br />
-          <button type="submit" className='m-2 bg-blue-500 hover:bg-blue-400 text-white font-bold px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'>Signin</button>
+          {alert && <div className="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <svg aria-hidden="true" className="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <span className="sr-only">Info</span>
+            <div>Incorrect details.</div>
+          </div>}
+          <button type="submit" className='m-2 bg-blue-500 hover:bg-blue-400 text-white font-bold px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'>Login</button>
         </form>
       </div>
 
