@@ -9,6 +9,7 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.11",
     "axios": "^1.2.2",
+    "daisyui": "^2.47.0",
     "react": "^18.0.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.42.1",

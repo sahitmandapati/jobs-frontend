@@ -16,7 +16,7 @@ function LandingPage() {
           </ul>
         </div>
         <div>
-          <Link to="login"><button className='m-2 bg-white hover:bg-gray-300 text-blue-500 font-bold px-4 border-b-4 border-gray-300 hover:border-gray-100 rounded'>Login</button></Link>
+          <Link to="login"><button className='m-2 bg-white hover:bg-gray-300 text-blue-500 font-bold px-4 border-b-4 border-gray-300 hover:border-gray-500 rounded'>Login</button></Link>
           <Link to="register"><button className='m-2 bg-blue-500 hover:bg-blue-400 text-white font-bold px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'>Register</button></Link>
         </div>
       </header>

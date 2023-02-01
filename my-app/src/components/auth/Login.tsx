@@ -13,7 +13,8 @@ const Login = ({setToken} : any) => {
 
   function handleRoutes(response : any) {
     console.log(response)
-    setToken(response.data.token)
+    // setToken(response.data.token)
+    sessionStorage.setItem('token',response.data.token)
     navigate('/home')
   }
 

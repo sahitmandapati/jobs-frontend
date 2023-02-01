@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import {
   BrowserRouter,
@@ -10,19 +10,21 @@ import LandingPage from './components/landingPage/LandingPage';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Home from './components/home';
-import useToken from './customHooks/useToken.js';
 
 const App = () => {
 
-  const {token, setToken} = useToken()
+  // const tokenValue = sessionStorage.getItem('token');
+  // const tokenString = tokenValue ? JSON.parse(tokenValue) : null;
+  // const [token, setToken] = useState(sessionStorage.getItem('token'))
+
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={token ? <Navigate to="/home" /> : <LandingPage />} />
-          <Route path="/login" element={token ? <Navigate to="/home" /> : <Login setToken={setToken} />} />
-          <Route path="/register" element={token ? <Navigate to="/home" /> : <Register />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
