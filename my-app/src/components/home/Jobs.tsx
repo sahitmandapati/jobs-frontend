@@ -1,9 +1,13 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux"
+import { changeJobs } from '../../store/jobData'
 
 function Jobs() {
 
-  const [jobs, setJobs] = useState([])
+  const jobState = useSelector((state: any) => state.jobData.jobs)
+  // console.log(jobState)
+  const dispatch = useDispatch()
 
   useEffect(() => {
 
@@ -12,14 +16,14 @@ function Jobs() {
     axios.get(api, { headers: { "Authorization": `Bearer ${JSON.parse(sessionStorage.getItem("token") as string)}` } })
       .then(res => {
         // console.log(res.data.jobs);
-        setJobs(res.data.jobs)
+        dispatch(changeJobs(res.data.jobs))
       }
       )
   }, [])
 
   return (
     <div className=''>
-      {jobs.map((job: any) =>
+      {jobState.map((job: any) =>
         <div className="card card-compact w-11/12 mx-auto my-5 bg-blue-200 shadow-xl">
           {/* <figure><img src="" alt="job-banner" /></figure> */}
           <div className="card-body">
