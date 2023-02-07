@@ -39,12 +39,12 @@ const Login = ({setToken} : any) => {
   }
 
   return (
-    <div className='flex'>
-      <img className='p-6' src={authHero} alt="hero" />
+    <div className='flex max-[640px]:flex-col-reverse'>
+      <img className='p-6' src={authHero} alt="hero"/>
       <div className='w-full'>
         <div className='px-4 m-2 font-black text-blue-500 text-2xl text-center uppercase'>UDHYOGAM</div>
         <div className='px-4 m-2 font-black text-gray-400 text-base text-center uppercase'>Sigin into your account</div>
-        <form onSubmit={handleSubmit} className='flex flex-col w-10/12 m-auto'>
+        <form onSubmit={handleSubmit} className='flex flex-col w-10/12 mx-auto h-4/5 mt-20'>
           <label className='flex flex-col'>
             Email:
             <input

@@ -15,7 +15,7 @@ const Register = () => {
   }
 
   return (
-    <div className='flex'>
+    <div className='flex max-[640px]:flex-col-reverse'>
       <img className='p-6' src={authHero} alt="hero" />
       <div className='w-full'>
         <div className='px-4 m-2 font-black text-blue-500 text-2xl text-center uppercase'>UDHYOGAM</div>

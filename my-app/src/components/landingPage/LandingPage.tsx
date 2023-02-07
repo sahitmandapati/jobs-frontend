@@ -6,9 +6,9 @@ function LandingPage() {
   return (
     <div className=''>
       <header className='flex justify-evenly border-gray-100 border-b-2'>
-        <div className='px-4 m-2 font-black text-blue-500 text-2xl'>UDHYOGAM</div>
+        <div className="btn btn-ghost font-black text-xl sm:text-2xl text-blue-500">UDHYOGAM</div>
         <div className='flex'>
-          <ul className='flex justify-evenly font-serif text-xs mt-2'>
+          <ul className='flex justify-evenly font-serif text-xs mt-2 max-[640px]:grid '>
             <li className="px-4 m-2">Home</li>
             <li className="px-4 m-2">Find Jobs</li>
             <li className="px-4 m-2">Find Candidates</li>
@@ -16,12 +16,12 @@ function LandingPage() {
           </ul>
         </div>
         <div>
-          <Link to="login"><button className='m-2 bg-white hover:bg-gray-300 text-blue-500 font-bold px-4 border-b-4 border-gray-300 hover:border-gray-500 rounded'>Login</button></Link>
+          <Link to="login"><button className='m-2 bg-white hover:bg-gray-300 text-blue-500 font-bold px-4 border-b-4 border-gray-300 hover:border-gray-500 rounded w-24'>Login</button></Link>
           <Link to="register"><button className='m-2 bg-blue-500 hover:bg-blue-400 text-white font-bold px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded'>Register</button></Link>
         </div>
       </header>
 
-      <main className='flex justify-evenly w-9/12 m-auto'>
+      <main className='flex justify-evenly w-9/12 m-auto max-[640px]:flex-col-reverse'>
         <img className='' src={hero} alt="hero" />
         <section className='uppercase'>
           <h1 className="text-4xl font-black text-blue-500 pt-2">Get The Right Job You Deserve</h1>

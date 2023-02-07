@@ -12,11 +12,11 @@ function NavbarHome() {
 
   return (
     <div className="navbar bg-base-100">
-      <div className="flex-1">
-        <a href='/home' className="btn btn-ghost normal-case px-4 m-2 font-black text-blue-500 text-2xl">UDHYOGAM</a>
+      <div className="flex w-5/12">
+        <a href='/home' className="btn btn-ghost font-black text-xl sm:text-2xl text-blue-500">UDHYOGAM</a>
       </div>
-      <div className="flex-none gap-2">
-        <div className="form-control">
+      <div className="flex-none gap-2 w-7/12">
+        <div className="form-control w-11/12">
           <input type="text" placeholder="Search" className="input input-bordered" />
         </div>
         <div className="dropdown dropdown-end">
