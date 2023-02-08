@@ -15,8 +15,6 @@ const Login = ({setToken} : any) => {
   const dispatch = useDispatch()
 
   function handleRoutes(response : any) {
-    console.log(response)
-    // setToken(response.data.token)
     sessionStorage.setItem("token",JSON.stringify(response.data.token))
     dispatch(changeUserName(response.data.user.name))
     dispatch(changeUserAccountType(response.data.user.accountType))

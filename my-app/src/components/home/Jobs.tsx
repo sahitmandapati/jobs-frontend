@@ -6,12 +6,13 @@ import { changeJobs } from '../../store/jobData'
 function Jobs() {
 
   const jobState = useSelector((state: any) => state.jobData.jobs)
+  const userAccountType = useSelector((state: any) => state.userData.userAccountType)
   // console.log(jobState)
   const dispatch = useDispatch()
 
   useEffect(() => {
 
-    let api = `https://jobs-api-1.vercel.app/api/v1/applications`
+    let api = userAccountType === 'applier' ? `https://jobs-api-1.vercel.app/api/v1/applications` : `https://jobs-api-1.vercel.app/api/v1/jobs`
 
     axios.get(api, { headers: { "Authorization": `Bearer ${JSON.parse(sessionStorage.getItem("token") as string)}` } })
       .then(res => {
