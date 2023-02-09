@@ -12,7 +12,7 @@ function Jobs() {
 
   useEffect(() => {
 
-    let api = userAccountType === 'applier' ? `https://jobs-api-1.vercel.app/api/v1/applications` : `https://jobs-api-1.vercel.app/api/v1/jobs`
+    let api = userAccountType === 'applier' ? `https://jobs-api-1.vercel.app/api/v1/jobs/applier` : `https://jobs-api-1.vercel.app/api/v1/jobs/poster`
 
     axios.get(api, { headers: { "Authorization": `Bearer ${JSON.parse(sessionStorage.getItem("token") as string)}` } })
       .then(res => {

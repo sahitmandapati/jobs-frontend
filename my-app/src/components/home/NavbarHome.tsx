@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { Dispatch } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function NavbarHome() {
+interface Props {
+  setActivepage: Dispatch<string>;
+}
+
+const NavbarHome: React.FC<Props> = ({ setActivepage }) => {
 
   const navigate = useNavigate()
 
-  function handleLogout(){
+  function handleLogout() {
     sessionStorage.removeItem("token")
     navigate('/')
   }
@@ -22,16 +26,18 @@ function NavbarHome() {
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" alt="user"/>
+              <img src="https://placeimg.com/80/80/people" alt="user" />
             </div>
           </label>
           <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
             <li>
-              <a href='/' className="justify-between">
-                Profile
-              </a>
+              <button onClick={() => setActivepage("home")}>Home</button>
             </li>
-            <li><a href='/'>Settings</a></li>
+            <li>
+              <button onClick={() => setActivepage("applications")}>Applications</button>
+            </li>
+            <li><button onClick={() => setActivepage("profile")}>Profile</button></li>
+            <li><button onClick={() => setActivepage("settings")}>Settings</button></li>
             <li><button onClick={() => handleLogout()}>Logout</button></li>
           </ul>
         </div>

@@ -3,7 +3,7 @@ import authHero from '../../images/undraw_sign_in_re_o58h.svg'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux"
-import { changeUserAccountType, changeUserName } from '../../store/userData';
+import { changeUserAccountType, changeUserName , changeUserId } from '../../store/userData';
 
 const Login = ({setToken} : any) => {
   const [email, setEmail] = useState('');
@@ -18,6 +18,7 @@ const Login = ({setToken} : any) => {
     sessionStorage.setItem("token",JSON.stringify(response.data.token))
     dispatch(changeUserName(response.data.user.name))
     dispatch(changeUserAccountType(response.data.user.accountType))
+    dispatch(changeUserId(response.data.user.userId))
     navigate('/home')
   }
 

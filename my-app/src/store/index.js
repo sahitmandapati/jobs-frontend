@@ -1,5 +1,6 @@
 import userDataReducer from "./userData";
 import jobDataReducer from "./jobData";
+import applicationsDataReducer from "./applicationData";
 
 import {
   legacy_createStore as createStore,
@@ -11,9 +12,11 @@ import { composeWithDevTools } from "@redux-devtools/extension";
 import thunk from "redux-thunk";
 
 
+
 const rootReducer = combineReducers({
   userData: userDataReducer,
-  jobData: jobDataReducer
+  jobData: jobDataReducer,
+  applicationsData: applicationsDataReducer
 });
 
 const store = createStore(

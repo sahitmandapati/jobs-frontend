@@ -1,6 +1,7 @@
 const initialState = {
   userName: "",
   userAccountType: "",
+  userId: "",
 };
 
 export function changeUserName(user_name) {
@@ -17,6 +18,13 @@ export function changeUserAccountType(user_account_type) {
   };
 }
 
+export function changeUserId(user_id) {
+  return {
+    type: "CHANGE_USER_ID",
+    payload: user_id,
+  };
+}
+
 export default function userDataReducer(userData = initialState, action) {
   switch (action.type) {
     case "CHANGE_USER_NAME":
@@ -28,6 +36,11 @@ export default function userDataReducer(userData = initialState, action) {
       return {
         ...userData,
         userAccountType: action.payload,
+      };
+    case "CHANGE_USER_ID":
+      return {
+        ...userData,
+        userId: action.payload,
       };
     default:
       return userData;
