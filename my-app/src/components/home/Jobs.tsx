@@ -31,7 +31,7 @@ function Jobs() {
             <h2 className="card-title">{job.company}</h2>
             <p>{job.position}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">Apply</button>
+              {userAccountType === 'applier' && <button className="btn btn-primary">Apply</button>}
             </div>
           </div>
         </div>
